@@ -2,10 +2,6 @@ html {
     font-family: 'Orbitron', sans-serif;font-family: 'VT323', monospace;
     background-image: url("background.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
-}
-
-
 }
 
 button {
@@ -42,5 +38,4 @@ input {
     font-size: 22px;
     background: rgb(202, 204, 174);
     border: 1px solid black;
-
 }
