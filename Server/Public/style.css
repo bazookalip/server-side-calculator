@@ -1,0 +1,28 @@
+html {
+    font-family: 'Orbitron', sans-serif;font-family: 'VT323', monospace;
+
+
+}
+
+button {
+    font-family: 'Orbitron', sans-serif;font-family: 'VT323', monospace;
+    padding: 6px;
+    font-size: 24px;
+}
+
+
+.parent {
+  text-align: center;
+}
+
+.child {
+    display: inline-block;
+     font-size: 24px;
+}
+
+input {
+    padding: 7px;
+    font-family: 'Orbitron', sans-serif;font-family: 'VT323', monospace;
+    font-size: 22px;
+
+}
