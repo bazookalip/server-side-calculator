@@ -18,7 +18,7 @@ app.get('/add', (req, res) => {
 
 app.post('/add', (req, res) => {
     console.log(req.body);
-    newSet = req.body; 
+    calculation = req.body; 
     calculateAnswer();   
     add.push(req.body);
     res.sendStatus(201);
@@ -31,19 +31,17 @@ app.listen(PORT, () => {
 
 
 function calculateAnswer() {
-    if (newSet.operator === '+') {
-        newSet.answer = (parseInt(newSet.firstValue)) + (parseInt(newSet.secondValue));
+    if (calculation.operator === '+') {
+        calculation.answer = (parseInt(calculation.firstValue)) + (parseInt(calculation.secondValue));
     }
-    if (newSet.operator === '-') {
-        newSet.answer = (parseInt(newSet.firstValue)) - (parseInt(newSet.secondValue));
+    if (calculation.operator === '-') {
+        calculation.answer = (parseInt(calculation.firstValue)) - (parseInt(calculation.secondValue));
     }
-    if (newSet.operator === '*') {
-        newSet.answer = (parseInt(newSet.firstValue)) * (parseInt(newSet.secondValue));
+    if (calculation.operator === '*') {
+        calculation.answer = (parseInt(calculation.firstValue)) * (parseInt(calculation.secondValue));
     }
-    if (newSet.operator === '/') {
-        newSet.answer = (parseInt(newSet.firstValue)) / (parseInt(newSet.secondValue));
+    if (calculation.operator === '/') {
+        calculation.answer = (parseInt(calculation.firstValue)) / (parseInt(calculation.secondValue));
     }
-    
-    console.log(add);
 
 }
