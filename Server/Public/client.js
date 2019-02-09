@@ -17,6 +17,7 @@ function add(){
         method: 'POST',
         url: '/add',
         data: { firstValue: $('#firstValue').val(),
+                operator: '+',
                 secondValue: $('#secondValue').val()
              }
     }).then(function () {

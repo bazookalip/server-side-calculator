@@ -14,7 +14,9 @@ app.get('/add', (req, res) => {
 });
 
 app.post('/add', (req, res) => {
-    req.body;
+    console.log(req.body);
+    newSet = req.body;    
+    calculateAnswer(newSet);
     add.push(req.body);
     res.sendStatus(201);
 });
@@ -26,7 +28,7 @@ app.listen(PORT, () => {
 
 let add = [];
 
-let num1 = '';
-let num2 = '';
-let operator = '';
-let total = '';
+function calculateAnswer() {
+   if(operator == '+')
+    parseInt(firstValue) + parseInt(secondValue);  
+};
