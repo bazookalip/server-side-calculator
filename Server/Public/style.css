@@ -45,6 +45,6 @@ input {
     background: lightgray;
 }
 
-#input {
-    background: white;
+.input {
+    border: 1px solid black;
 }
