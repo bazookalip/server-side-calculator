@@ -13,7 +13,7 @@ function onReady(){
 }
 
 function add(){    
-    $.ajax({
+  $.ajax({
         method: 'POST',
         url: '/add',
         data: { firstValue: $('#firstValue').val(),
@@ -21,7 +21,8 @@ function add(){
                 secondValue: $('#secondValue').val()
              }
     }).then(function () {
-         getAdd();
+         getNumber();
+         clear()
     });
    
 
@@ -29,16 +30,53 @@ function add(){
 
 function subtract(){
     console.log('subract');  
+    $.ajax({
+        method: 'POST',
+        url: '/add',
+        data: {
+            firstValue: $('#firstValue').val(),
+            operator: '-',
+            secondValue: $('#secondValue').val()
+        }
+    }).then(function () {
+        getNumber();
+        clear();
+
+    });
 }
 
 function multiply(){
     console.log('multiply');
-    
+    $.ajax({
+        method: 'POST',
+        url: '/add',
+        data: {
+            firstValue: $('#firstValue').val(),
+            operator: '*',
+            secondValue: $('#secondValue').val()
+        }
+    }).then(function () {
+        getNumber();
+        clear();
+
+    });
 }
 
 function divide (){
     console.log('divide');
-    
+    $.ajax({
+        method: 'POST',
+        url: '/add',
+        data: {
+            firstValue: $('#firstValue').val(),
+            operator: '/',
+            secondValue: $('#secondValue').val()
+        }
+    }).then(function () {
+        getNumber();
+        clear();
+
+    });
 }
 
 function equals (){
@@ -51,21 +89,21 @@ function clear(){
     $('#secondValue').val('');
 }
 
-function getAdd(){
+function getNumber(){
     $.ajax({
         method: 'GET',
         url: '/add'
     }).then(function (response) {
         console.log(response);
-        $('#output').empty();
+       $('#output').empty();
         response.forEach((number) => {
             $('#output').append(`
-             ${number.firstValue} +
+             ${number.firstValue} 
+             ${number.operator}
              ${number.secondValue} = 
-             ${number.total} <br>
+             ${number.answer}</br>
         `)
-
         });
-
     })
 }
+

@@ -1,5 +1,8 @@
 let PORT = 5000;
 
+let add = [];
+
+
 let express = require('express');
 let bodyParser = require('body-parser');
 
@@ -15,8 +18,8 @@ app.get('/add', (req, res) => {
 
 app.post('/add', (req, res) => {
     console.log(req.body);
-    newSet = req.body;    
-    calculateAnswer(newSet);
+    newSet = req.body; 
+    calculateAnswer();   
     add.push(req.body);
     res.sendStatus(201);
 });
@@ -26,9 +29,21 @@ app.listen(PORT, () => {
     console.log('Running on port', PORT);
 });
 
-let add = [];
 
 function calculateAnswer() {
-   if(operator == '+')
-    parseInt(firstValue) + parseInt(secondValue);  
-};
+    if (newSet.operator === '+') {
+        newSet.answer = (parseInt(newSet.firstValue)) + (parseInt(newSet.secondValue));
+    }
+    if (newSet.operator === '-') {
+        newSet.answer = (parseInt(newSet.firstValue)) - (parseInt(newSet.secondValue));
+    }
+    if (newSet.operator === '*') {
+        newSet.answer = (parseInt(newSet.firstValue)) * (parseInt(newSet.secondValue));
+    }
+    if (newSet.operator === '/') {
+        newSet.answer = (parseInt(newSet.firstValue)) / (parseInt(newSet.secondValue));
+    }
+    
+    console.log(add);
+
+}
