@@ -16,16 +16,15 @@ function add(){
   $.ajax({
         method: 'POST',
         url: '/add',
-        data: { firstValue: $('#firstValue').val(),
-                operator: '+',
-                secondValue: $('#secondValue').val()
-             }
-    }).then(function () {
-         getNumber();
-         clear()
-    });
-   
+        data: { 
+            firstValue: $('#firstValue').val(),
+            operator: '+',
+            secondValue: $('#secondValue').val()
 
+             }
+    }).then(function () {       
+         
+    });
 }
 
 function subtract(){
@@ -39,9 +38,6 @@ function subtract(){
             secondValue: $('#secondValue').val()
         }
     }).then(function () {
-        getNumber();
-        clear();
-
     });
 }
 
@@ -56,8 +52,6 @@ function multiply(){
             secondValue: $('#secondValue').val()
         }
     }).then(function () {
-        getNumber();
-        clear();
 
     });
 }
@@ -73,29 +67,17 @@ function divide (){
             secondValue: $('#secondValue').val()
         }
     }).then(function () {
-        getNumber();
-        clear();
 
     });
 }
 
 function equals (){
-    console.log('equals');
-}
-
-
-function clear(){
-    $('#firstValue').val('');
-    $('#secondValue').val('');
-}
-
-function getNumber(){
     $.ajax({
         method: 'GET',
         url: '/add'
     }).then(function (response) {
         console.log(response);
-       $('#output').empty();
+        $('#output').empty();
         response.forEach((number) => {
             $('#output').append(`
              ${number.firstValue} 
@@ -104,6 +86,17 @@ function getNumber(){
              ${number.answer}</br>
         `)
         });
+        clear();
+
     })
+
 }
+
+
+function clear(){
+    $('#firstValue').val('');
+    $('#secondValue').val('');
+}
+
+
 

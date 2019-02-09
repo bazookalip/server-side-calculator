@@ -18,7 +18,7 @@ app.get('/add', (req, res) => {
 
 app.post('/add', (req, res) => {
     console.log(req.body);
-    calculation = req.body; 
+    taco = req.body; 
     calculateAnswer();   
     add.push(req.body);
     res.sendStatus(201);
@@ -31,17 +31,17 @@ app.listen(PORT, () => {
 
 
 function calculateAnswer() {
-    if (calculation.operator === '+') {
-        calculation.answer = (parseInt(calculation.firstValue)) + (parseInt(calculation.secondValue));
+    if (taco.operator === '+') {
+        taco.answer = (parseInt(taco.firstValue)) + (parseInt(taco.secondValue));
     }
-    if (calculation.operator === '-') {
-        calculation.answer = (parseInt(calculation.firstValue)) - (parseInt(calculation.secondValue));
+    if (taco.operator === '-') {
+        taco.answer = (parseInt(taco.firstValue)) - (parseInt(taco.secondValue));
     }
-    if (calculation.operator === '*') {
-        calculation.answer = (parseInt(calculation.firstValue)) * (parseInt(calculation.secondValue));
+    if (taco.operator === '*') {
+        taco.answer = (parseInt(taco.firstValue)) * (parseInt(taco.secondValue));
     }
-    if (calculation.operator === '/') {
-        calculation.answer = (parseInt(calculation.firstValue)) / (parseInt(calculation.secondValue));
+    if (taco.operator === '/') {
+        taco.answer = (parseInt(taco.firstValue)) / (parseInt(taco.secondValue));
     }
 
 }
