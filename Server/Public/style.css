@@ -39,3 +39,12 @@ input {
     background: rgb(202, 204, 174);
     border: 1px solid black;
 }
+
+#calcInput {
+    width: 70px;
+    background: lightgray;
+}
+
+#input {
+    background: white;
+}

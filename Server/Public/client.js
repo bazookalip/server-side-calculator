@@ -10,6 +10,12 @@ function onReady(){
     $('#divideButton').on('click', divide);
     $('#equalsButton').on('click', equals);
     $('#clearButton').on('click', clear);
+    
+    $('#7').on('click', seven);
+    $('#C').on('click', empty);
+
+
+
 }
 
 function add(){    
@@ -99,4 +105,10 @@ function clear(){
 }
 
 
+function seven (){
+    $('#input').append('7');
+};
 
+function empty (){
+    $('#input').val('');
+}
