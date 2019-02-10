@@ -36,7 +36,7 @@ input {
     padding: 7px;
     font-family: 'Orbitron', sans-serif;font-family: 'VT323', monospace;
     font-size: 22px;
-    background: rgb(202, 204, 174);
+    background: rgba(244, 247, 208, 0.432);
     border: 1px solid black;
 }
 
@@ -47,4 +47,9 @@ input {
 
 .input {
     border: 1px solid black;
+}
+
+.calcOutput {
+    text-align: center;
+    font-size: 24px;
 }

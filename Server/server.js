@@ -1,7 +1,7 @@
 let PORT = process.env.PORT || 5000;
 
 let add = [];
-
+let calculator = [];
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -23,6 +23,11 @@ app.post('/add', (req, res) => {
     add.push(req.body);
     res.sendStatus(201);
 });
+
+app.post('/calculator', (req, res) => {
+    console.log(req.body);
+    calculator.push(req.body);
+})
 
 
 app.listen(PORT, () => {

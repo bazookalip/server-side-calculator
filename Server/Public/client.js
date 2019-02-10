@@ -136,6 +136,9 @@ function nine() {
 
 function plusCalc() {
     $('.input').append('+');
+    let value = $('.input').text()
+    console.log(value); 
+    
 };
 
 function four() {
@@ -175,9 +178,26 @@ function empty() {
 
 function equalz() {
     $('.input').append('=');
+    let value = $('.input').text()
+    console.log(value);
+    $('.calcOutput').append(value, '<br>')
+    $.ajax({
+        method: 'POST',
+        url: '/calculator',
+        data: {
+            firstValue: $('.input').text(),
+
+        }
+    }).then(function () {
+
+    });
+    empty()
+
 };
 
 function divideCalc() {
     $('.input').append('/');
 
 };
+
+
