@@ -14,22 +14,22 @@ function onReady(){
     $('#7').on('click', seven);
     $('#8').on('click', eight);
     $('#9').on('click', nine);
-    $('#plus').on('click', plus);
+    $('#plus').on('click', plusCalc);
 
     $('#4').on('click', four);
     $('#5').on('click', five);
     $('#6').on('click', six);
-    $('#minus').on('click', minus);
-    
+    $('#minus').on('click', minusCalc);
+
     $('#1').on('click', one);
     $('#2').on('click', two);
     $('#3').on('click', three);
-    $('#multiply').on('click', multiply);
+    $('#multiply').on('click', multiplyCalc);
 
     $('#0').on('click', zero);
     $('#C').on('click', empty);
-    $('#equals').on('click', equals);
-    $('#slash').on('click', divides);
+    $('#equalz').on('click', equalz);
+    $('#slash').on('click', divideCalc);
 
 
 
@@ -122,7 +122,7 @@ function clear(){
 }
 
 
-function seven (){
+function seven() {
     $('.input').append('7');
 };
 
@@ -134,7 +134,7 @@ function nine() {
     $('.input').append('9');
 };
 
-function plus() {
+function plusCalc() {
     $('.input').append('+');
 };
 
@@ -148,7 +148,7 @@ function five() {
 function six() {
     $('.input').append('6');
 };
-function minus() {
+function minusCalc() {
     $('.input').append('-');
 };
 function one() {
@@ -161,7 +161,7 @@ function two() {
 function three() {
     $('.input').append('3');
 };
-function multiply() {
+function multiplyCalc() {
     $('.input').append('*');
 };
 
@@ -169,15 +169,15 @@ function zero() {
     $('.input').append('0');
 };
 
-function empty (){
+function empty() {
     $('.input').empty();
 }
 
-function equals() {
+function equalz() {
     $('.input').append('=');
 };
 
-function divides() {
+function divideCalc() {
     $('.input').append('/');
-    
+
 };
