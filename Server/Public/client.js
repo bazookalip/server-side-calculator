@@ -1,5 +1,10 @@
 $(document).ready(onReady);
 
+let operator;
+let inputNumberConcatenate = '';
+let firstValue;
+let secondValue;
+
 
 function onReady(){
     console.log('ready!');
@@ -11,25 +16,13 @@ function onReady(){
     $('#equalsButton').on('click', equals);
     $('#clearButton').on('click', clear);
     
-    $('#7').on('click', seven);
-    $('#8').on('click', eight);
-    $('#9').on('click', nine);
-    $('#plus').on('click', plusCalc);
+    $('.number').on('click', numberClicked);
+   
+    $('.operator').on('click', operatorClicked);
 
-    $('#4').on('click', four);
-    $('#5').on('click', five);
-    $('#6').on('click', six);
-    $('#minus').on('click', minusCalc);
-
-    $('#1').on('click', one);
-    $('#2').on('click', two);
-    $('#3').on('click', three);
-    $('#multiply').on('click', multiplyCalc);
-
-    $('#0').on('click', zero);
     $('#C').on('click', empty);
     $('#equalz').on('click', equalz);
-    $('#slash').on('click', divideCalc);
+   
 
 
 
@@ -121,83 +114,73 @@ function clear(){
     $('#secondValue').val('');
 }
 
+//////////  2nd calculator   ////////////
 
-function seven() {
-    $('.input').append('7');
-};
+function numberClicked() {
+    console.log('number button clicked');
+    inputButtonText = $(this).text();
+    $('.input').append(inputButtonText);
+    inputNumberConcatenate += inputButtonText;
+    console.log(inputNumberConcatenate);
+}
 
-function eight() {
-    $('.input').append('8');
-};
 
-function nine() {
-    $('.input').append('9');
-};
-
-function plusCalc() {
-    $('.input').append('+');
-    let value = $('.input').text()
-    console.log(value); 
-    
-};
-
-function four() {
-    $('.input').append('4');
-};
-function five() {
-    $('.input').append('5');
-};
-
-function six() {
-    $('.input').append('6');
-};
-function minusCalc() {
-    $('.input').append('-');
-};
-function one() {
-    $('.input').append('1');
-};
-
-function two() {
-    $('.input').append('2');
-};
-function three() {
-    $('.input').append('3');
-};
-function multiplyCalc() {
-    $('.input').append('*');
-};
-
-function zero() {
-    $('.input').append('0');
-};
+function operatorClicked() {
+    console.log('calc operator is:', $(this).text());
+    operator = $(this).text();
+    $('.input').append(operator);
+    firstValue = inputNumberConcatenate;
+    inputNumberConcatenate = '';
+}
+   
 
 function empty() {
     $('.input').empty();
 }
 
+
 function equalz() {
-    $('.input').append('=');
     let value = $('.input').text()
     console.log(value);
-    $('.calcOutput').append(value, '<br>')
+    secondValue = inputNumberConcatenate;
+    console.log('equals/submit button clicked');
+
     $.ajax({
         method: 'POST',
         url: '/calculator',
         data: {
-            firstValue: $('.input').text(),
-
+            firstValue: firstValue,
+            operator: operator,
+            secondValue: secondValue
         }
     }).then(function () {
+        getCalculation();
+    })
 
-    });
-    empty()
 
-};
+}
 
-function divideCalc() {
-    $('.input').append('/');
 
-};
 
+function getCalculation() {
+    $.ajax({
+        method: 'GET',
+        url: '/calculator'
+    }).then(function (response) {
+
+        $('.calcOutput').empty();
+        console.log(response);
+
+        response.forEach(function (number) {
+           $('.calcOutput').empty();
+            $('.calcOutput').append(`
+             ${number.firstValue} 
+             ${number.operator}
+            ${number.secondValue} =
+             ${number.answer}</br>
+        `)
+
+        });
+    })
+}
 

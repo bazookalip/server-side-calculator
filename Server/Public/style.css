@@ -6,8 +6,11 @@ html {
 
 button {
     font-family: 'Orbitron', sans-serif;font-family: 'VT323', monospace;
-    padding: 6px;
     font-size: 24px;
+    background-color: rgba(196, 197, 180, 0.788);
+    border: 1px solid black;
+    padding: 15px 22px;
+    text-align: center;
 }
 
 .button {
@@ -47,9 +50,18 @@ input {
 
 .input {
     border: 1px solid black;
+    margin-bottom: 5px;
+    height: 20px;
+    width: 235px;
+    background-color: rgba(227, 235, 204, 0.623);
+    text-align: right;
 }
 
 .calcOutput {
     text-align: center;
     font-size: 24px;
 }
+
+
+
+

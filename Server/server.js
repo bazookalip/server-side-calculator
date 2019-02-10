@@ -24,9 +24,17 @@ app.post('/add', (req, res) => {
     res.sendStatus(201);
 });
 
+app.get('/calculator', (req, res) => {
+    res.send(calculator)
+});
+
+
 app.post('/calculator', (req, res) => {
     console.log(req.body);
+    taco = req.body;
+    calculateAnswer();
     calculator.push(req.body);
+    res.sendStatus(201);
 })
 
 
