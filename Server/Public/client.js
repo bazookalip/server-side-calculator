@@ -16,9 +16,9 @@ function onReady(){
     $('#equalsButton').on('click', equals);
     $('#clearButton').on('click', clear);
     
-    $('.number').on('click', numberClicked);
+    $('.number').on('click', numberClick);
    
-    $('.operator').on('click', operatorClicked);
+    $('.operator').on('click', operatorClick);
 
     $('#C').on('click', empty);
     $('#equalz').on('click', equalz);
@@ -116,8 +116,7 @@ function clear(){
 
 //////////  2nd calculator   ////////////
 
-function numberClicked() {
-    console.log('number button clicked');
+function numberClick() {
     inputButtonText = $(this).text();
     $('.input').append(inputButtonText);
     inputNumberConcatenate += inputButtonText;
@@ -125,8 +124,8 @@ function numberClicked() {
 }
 
 
-function operatorClicked() {
-    console.log('calc operator is:', $(this).text());
+function operatorClick() {
+    console.log($(this).text());
     operator = $(this).text();
     $('.input').append(operator);
     firstValue = inputNumberConcatenate;
@@ -142,8 +141,9 @@ function empty() {
 function equalz() {
     let value = $('.input').text()
     console.log(value);
+   $('.calcOutput').append(value, '<br>')
     secondValue = inputNumberConcatenate;
-    console.log('equals/submit button clicked');
+    $('.calcOutput').empty();
 
     $.ajax({
         method: 'POST',
@@ -154,15 +154,16 @@ function equalz() {
             secondValue: secondValue
         }
     }).then(function () {
-        getCalculation();
+        numberGetter();
     })
+empty();
 
 
 }
 
 
 
-function getCalculation() {
+function numberGetter() {
     $.ajax({
         method: 'GET',
         url: '/calculator'
@@ -170,13 +171,13 @@ function getCalculation() {
 
         $('.calcOutput').empty();
         console.log(response);
-
+        $('.calcOutput').empty();
         response.forEach(function (number) {
-           $('.calcOutput').empty();
-            $('.calcOutput').append(`
+        //    
+        $('.calcOutput').append(`
              ${number.firstValue} 
              ${number.operator}
-            ${number.secondValue} =
+             ${number.secondValue} =
              ${number.answer}</br>
         `)
 
