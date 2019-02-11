@@ -1,7 +1,7 @@
 $(document).ready(onReady);
 
 let operator;
-let inputNumberConcatenate = '';
+let inputNumber = '';
 let firstValue;
 let secondValue;
 
@@ -119,32 +119,25 @@ function clear(){
 function numberClick() {
     inputButtonText = $(this).text();
     $('.input').append(inputButtonText);
-    inputNumberConcatenate += inputButtonText;
-    console.log(inputNumberConcatenate);
+    inputNumber += inputButtonText;
+    console.log(inputNumber);
 }
-
 
 function operatorClick() {
     console.log($(this).text());
     operator = $(this).text();
     $('.input').append(operator);
-    firstValue = inputNumberConcatenate;
-    inputNumberConcatenate = '';
-}
-   
+    firstValue = inputNumber;
+    inputNumber = '';
+}  
 
 function empty() {
     $('.input').empty();
+    inputNumber = '';
 }
 
-
 function equalz() {
-    let value = $('.input').text()
-    console.log(value);
-   $('.calcOutput').append(value, '<br>')
-    secondValue = inputNumberConcatenate;
-    $('.calcOutput').empty();
-
+    secondValue = inputNumber;
     $.ajax({
         method: 'POST',
         url: '/calculator',
@@ -154,14 +147,10 @@ function equalz() {
             secondValue: secondValue
         }
     }).then(function () {
-        numberGetter();
+        numberGetter();       
     })
-empty();
-
-
+    empty();
 }
-
-
 
 function numberGetter() {
     $.ajax({
@@ -173,14 +162,13 @@ function numberGetter() {
         console.log(response);
         $('.calcOutput').empty();
         response.forEach(function (number) {
-        //    
-        $('.calcOutput').append(`
+            $('.calcOutput').append(`
              ${number.firstValue} 
              ${number.operator}
              ${number.secondValue} =
              ${number.answer}</br>
         `)
-
+            empty();
         });
     })
 }
