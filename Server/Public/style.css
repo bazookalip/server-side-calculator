@@ -32,7 +32,7 @@ button {
 
 .child {
     display: inline-block;
-    font-size: 36px;
+    font-size: 24px;
 }
 
 input {
@@ -41,6 +41,8 @@ input {
     font-size: 22px;
     background: rgba(244, 247, 208, 0.432);
     border: 1px solid black;
+    text-align: right;
+
 }
 
 #calcInput {
@@ -50,11 +52,12 @@ input {
 
 .input {
     border: 1px solid black;
-    margin-bottom: 5px;
-    height: 20px;
+    font-size: 24px;
+    height: 30px;
     width: 235px;
     background-color: rgba(227, 235, 204, 0.623);
     text-align: right;
+
 }
 
 .calcOutput {
