@@ -7,25 +7,16 @@ let secondValue;
 
 
 function onReady(){
-    console.log('ready!');
-
     $('#addButton').on('click', add);
     $('#subtractButton').on('click', subtract);
     $('#multiplyButton').on('click', multiply);
     $('#divideButton').on('click', divide);
     $('#equalsButton').on('click', equals);
     $('#clearButton').on('click', clear);
-    
     $('.number').on('click', numberClick);
-   
     $('.operator').on('click', operatorClick);
-
     $('#C').on('click', empty);
     $('#equalz').on('click', equalz);
-   
-
-
-
 }
 
 function add(){    
@@ -36,11 +27,9 @@ function add(){
             firstValue: $('#firstValue').val(),
             operator: '+',
             secondValue: $('#secondValue').val()
-
              }
-    }).then(function () {       
-         
-    });
+    }).then(function () {               
+      });
 }
 
 function subtract(){
@@ -68,8 +57,7 @@ function multiply(){
             secondValue: $('#secondValue').val()
         }
     }).then(function () {
-
-    });
+     });
 }
 
 function divide (){
@@ -83,8 +71,7 @@ function divide (){
             secondValue: $('#secondValue').val()
         }
     }).then(function () {
-
-    });
+  });
 }
 
 function equals (){
@@ -103,9 +90,7 @@ function equals (){
         `)
         });
         clear();
-
     })
-
 }
 
 
