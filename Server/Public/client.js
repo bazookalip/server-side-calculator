@@ -4,13 +4,11 @@ let operator;
 let inputNumber = '';
 let firstValue;
 let secondValue;
+let selectedOperator = '';
 
 
 function onReady(){
-    $('#addButton').on('click', add);
-    $('#subtractButton').on('click', subtract);
-    $('#multiplyButton').on('click', multiply);
-    $('#divideButton').on('click', divide);
+    $('.operatorButton').on('click', operatorButton);
     $('#equalsButton').on('click', equals);
     $('#clearButton').on('click', clear);
     $('.number').on('click', numberClick);
@@ -19,59 +17,19 @@ function onReady(){
     $('#equalz').on('click', equalz);
 }
 
-function add(){    
+function operatorButton(){    
+    selectedOperator = $(this).text();
+    console.log(selectedOperator);
   $.ajax({
         method: 'POST',
         url: '/add',
         data: { 
             firstValue: $('#firstValue').val(),
-            operator: '+',
+            operator: selectedOperator,
             secondValue: $('#secondValue').val()
              }
     }).then(function () {               
       });
-}
-
-function subtract(){
-    console.log('subract');  
-    $.ajax({
-        method: 'POST',
-        url: '/add',
-        data: {
-            firstValue: $('#firstValue').val(),
-            operator: '-',
-            secondValue: $('#secondValue').val()
-        }
-    }).then(function () {
-    });
-}
-
-function multiply(){
-    console.log('multiply');
-    $.ajax({
-        method: 'POST',
-        url: '/add',
-        data: {
-            firstValue: $('#firstValue').val(),
-            operator: '*',
-            secondValue: $('#secondValue').val()
-        }
-    }).then(function () {
-     });
-}
-
-function divide (){
-    console.log('divide');
-    $.ajax({
-        method: 'POST',
-        url: '/add',
-        data: {
-            firstValue: $('#firstValue').val(),
-            operator: '/',
-            secondValue: $('#secondValue').val()
-        }
-    }).then(function () {
-  });
 }
 
 function equals (){
@@ -92,6 +50,7 @@ function equals (){
         clear();
     })
 }
+
 
 
 function clear(){
