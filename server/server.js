@@ -1,4 +1,4 @@
-let PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 let add = [];
 let calculator = [] ;
@@ -38,9 +38,7 @@ app.post('/calculator', (req, res) => {
 })
 
 
-app.listen(PORT, () => {
-    console.log('Running on port', PORT);
-});
+
 
 
 function calculateAnswer() {
@@ -58,3 +56,8 @@ function calculateAnswer() {
     }
 
 }
+
+
+app.listen(PORT, () => {
+  console.log("Running on port", PORT);
+});
